@@ -9,7 +9,7 @@ public class Pull extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public Pull() {
-		super("verbs/pull.png", 64, 32, +64 + 64, +32, 1, "Pull");
+		super("verbs/pull.png", 64, 32, +64 + 64, +32, 1, true, "Pull");
 	}
 
 	@Override

@@ -1,8 +1,9 @@
 package com.storyteller.core.screen;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import com.badlogic.gdx.utils.Array;
 import com.storyteller.core.Entity;
 import com.storyteller.core.EntityTextureWord;
 import com.storyteller.core.Rendereable;
@@ -11,11 +12,11 @@ public abstract class ScreenBox implements Rendereable {
 
 	private ScreenCore screen;
 
-	private Array<Entity> boxItems;
+	private List<Entity> boxItems;
 
 	public ScreenBox(ScreenCore aScreen) {
 		this.screen = aScreen;
-		this.boxItems = new Array<Entity>();
+		this.boxItems = new ArrayList<Entity>();
 	}
 
 	public EntityTextureWord searchForClickedTexture(float x, float y) {
@@ -23,7 +24,8 @@ public abstract class ScreenBox implements Rendereable {
 
 		while (iterator.hasNext()) {
 			Entity anEntity = iterator.next();
-			if (anEntity instanceof EntityTextureWord && ((EntityTextureWord) anEntity).getRectangle().contains(x, y)) {
+			if (anEntity.isTouchable() && anEntity instanceof EntityTextureWord
+					&& ((EntityTextureWord) anEntity).getRectangle().contains(x, y)) {
 				return (EntityTextureWord) anEntity;
 			}
 		}
@@ -56,7 +58,7 @@ public abstract class ScreenBox implements Rendereable {
 	/**
 	 * @return the boxItems
 	 */
-	public Array<Entity> getBoxItems() {
+	public List<Entity> getBoxItems() {
 		return boxItems;
 	}
 
@@ -64,7 +66,7 @@ public abstract class ScreenBox implements Rendereable {
 	 * @param boxItems
 	 *            the boxItems to set
 	 */
-	public void setBoxItems(Array<Entity> boxItems) {
+	public void setBoxItems(List<Entity> boxItems) {
 		this.boxItems = boxItems;
 	}
 

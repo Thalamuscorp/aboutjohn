@@ -9,7 +9,7 @@ public class PickUp extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public PickUp() {
-		super("verbs/pickUp.png", 64, 32, +64, +32 + 32, 1, "Pick up");
+		super("verbs/pickUp.png", 64, 32, +64, +32 + 32, 1, true, "Pick up");
 	}
 
 	@Override

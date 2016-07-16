@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.storyteller.core.CoreGame;
 import com.storyteller.core.EntityTextureWord;
 import com.storyteller.core.sentenceengine.verbs.WalkTo;
@@ -14,18 +12,21 @@ public abstract class ScreenCore implements Screen {
 
 	public CoreGame game;
 
+	// Camera Management
 	public OrthographicCamera camera;
-	public FitViewport viewport;
-	public Stage stage; // puede ser que no lo necesite porque lo programe a
-						// mano
 
+	// Screen Sections
 	public ScreenBoxInventory boxInventory;
 	public ScreenBoxScene boxScene;
 	public ScreenBoxSentence boxSentence;
 	public ScreenBoxVerbs boxVerbs;
 
-	public ScreenCore(final CoreGame game) {
+	// Walkable Engine
+	public ScreenWalkingEngine walkingEngine;
+
+	public ScreenCore(CoreGame game) {
 		super();
+
 		this.game = game;
 
 		this.game.sentenceEngine.removeAllObservers();
@@ -37,14 +38,22 @@ public abstract class ScreenCore implements Screen {
 		this.boxVerbs = new ScreenBoxVerbs(this);
 
 		// initialize camera
-		this.camera = new OrthographicCamera();
-		// viewport = new FitViewport(640, 480, camera);
-		// viewport.apply();
-		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		this.camera = new OrthographicCamera(640, 480);
+		this.camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
+		this.camera.update();
 
 		// Mouse processor
 		ScreenMouseInputProcessor processor = new ScreenMouseInputProcessor(this);
 		Gdx.input.setInputProcessor(processor);
+
+	}
+
+	public ScreenCore(CoreGame game, ScreenWalkingEngine walkingEngine) {
+
+		this(game);
+
+		this.walkingEngine = walkingEngine;
+
 	}
 
 	@Override
@@ -142,8 +151,9 @@ public abstract class ScreenCore implements Screen {
 	// UNUSED METHOS SO FAR
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
+		// viewport.update(width, height);
+		// camera.position.set(camera.viewportWidth / 2, camera.viewportHeight /
+		// 2, 0);
 	}
 
 	@Override

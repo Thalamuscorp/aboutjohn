@@ -9,7 +9,7 @@ public class Open extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public Open() {
-		super("verbs/open.png", 64, 32, 0, +32 + 32, 1, "Open");
+		super("verbs/open.png", 64, 32, 0, +32, 1, true, "Open");
 	}
 
 	@Override

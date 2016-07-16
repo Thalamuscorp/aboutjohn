@@ -9,7 +9,7 @@ public class LookAt extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public LookAt() {
-		super("verbs/lookAt.png", 64, 32, +64, +32, 1, "Look at");
+		super("verbs/lookAt.png", 64, 32, +64, +32, 1, true, "Look at");
 	}
 
 	@Override

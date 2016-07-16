@@ -1,14 +1,17 @@
 package com.storyteller.core.screen;
 
+import java.util.Collections;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Sort;
 import com.storyteller.core.EntityLabel;
 import com.storyteller.core.EntityTextureSortComparator;
 
 public class ScreenBoxScene extends ScreenBox {
 
 	private EntityLabel generalMessage;
+
+	boolean primeraVez = true;
 
 	public ScreenBoxScene(ScreenCore screen) {
 		super(screen);
@@ -18,8 +21,15 @@ public class ScreenBoxScene extends ScreenBox {
 
 	@Override
 	public void render(ScreenCore screen) {
-		Sort.instance().sort(this.getBoxItems(), new EntityTextureSortComparator());
+		if (primeraVez) {
+			System.out.println(this.getBoxItems());
+		}
+		Collections.sort(this.getBoxItems(), new EntityTextureSortComparator());
 		super.render(screen);
+		if (primeraVez) {
+			System.out.println(this.getBoxItems());
+		}
+		primeraVez = false;
 		this.generalMessage.render(screen);
 	}
 

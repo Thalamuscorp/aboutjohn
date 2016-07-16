@@ -9,7 +9,7 @@ public class Give extends EntityTextureWordVerbComposite {
 	public EntityLabel label;
 
 	public Give() {
-		super("verbs/close.png", 64, 32, 0, 0, 1, "Give", "to");
+		super("verbs/give.png", 64, 32, 0, +32 + 32, 1, true, "Give", "to");
 	}
 
 	@Override

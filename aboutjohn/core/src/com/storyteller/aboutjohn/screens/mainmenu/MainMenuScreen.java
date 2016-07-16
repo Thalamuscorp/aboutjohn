@@ -1,22 +1,30 @@
-package com.storyteller.aboutjohn;
+package com.storyteller.aboutjohn.screens.mainmenu;
 
-import com.storyteller.aboutjohn.firstscreen.FirstScreen;
+import com.badlogic.gdx.utils.Align;
+import com.storyteller.aboutjohn.screens.first.FirstScreen;
 import com.storyteller.core.CoreGame;
+import com.storyteller.core.EntityLabel;
 import com.storyteller.core.screen.ScreenCore;
 
 public class MainMenuScreen extends ScreenCore {
 
+	public EntityLabel title;
+
+	public EntityLabel clickToStart;
+
 	public MainMenuScreen(CoreGame game) {
 		super(game);
+
+		title = new EntityLabel("About John", 9999, 300, 300, 300, Align.center);
+		clickToStart = new EntityLabel("Click to start", 9999, 300, 200, 300, Align.center);
+
+		this.boxScene.getBoxItems().add(title);
+		this.boxScene.getBoxItems().add(clickToStart);
 	}
 
 	@Override
 	public void renderBoxScene() {
 		super.renderBoxScene();
-
-		this.game.font24black.draw(game.batch, "INVASION", 300, 300);
-		this.game.font14black.draw(game.batch, "Click to start", 300, 200);
-
 	}
 
 	@Override

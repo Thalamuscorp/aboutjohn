@@ -7,8 +7,11 @@ public abstract class Entity implements SentenceEngineObserver, Rendereable {
 
 	private int zsort;
 
-	public Entity(int zsort) {
+	private boolean touchable;
+
+	public Entity(int zsort, boolean touchable) {
 		this.setZsort(zsort);
+		this.setTouchable(touchable);
 	}
 
 	public abstract void render(ScreenCore screen);
@@ -24,6 +27,14 @@ public abstract class Entity implements SentenceEngineObserver, Rendereable {
 
 	public void setZsort(int zsort) {
 		this.zsort = zsort;
+	}
+
+	public boolean isTouchable() {
+		return touchable;
+	}
+
+	public void setTouchable(boolean touchable) {
+		this.touchable = touchable;
 	}
 
 }

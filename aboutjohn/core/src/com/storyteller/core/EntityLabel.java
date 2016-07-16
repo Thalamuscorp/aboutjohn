@@ -37,7 +37,7 @@ public class EntityLabel extends Entity {
 	 */
 	public EntityLabel(String message, int seconds, int x, int y, int width, int alignment) {
 
-		super(0);
+		super(0, false);
 
 		this.setMessage(message, seconds, x, y, width, alignment);
 

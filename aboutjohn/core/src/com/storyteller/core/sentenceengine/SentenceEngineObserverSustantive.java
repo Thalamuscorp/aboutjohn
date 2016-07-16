@@ -18,7 +18,7 @@ public interface SentenceEngineObserverSustantive extends SentenceEngineObserver
 
 	public void talkTo();
 
-	public void walkTo(float destinationX, float destinationY);
+	public void walkTo(int destinationX, int destinationY);
 
 	public void usedWith(EntityTextureWordSustantive something);
 

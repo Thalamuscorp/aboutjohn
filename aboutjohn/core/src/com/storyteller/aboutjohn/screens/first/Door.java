@@ -1,4 +1,4 @@
-package com.storyteller.aboutjohn.firstscreen;
+package com.storyteller.aboutjohn.screens.first;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -17,8 +17,8 @@ public class Door extends EntityTextureWordSustantive {
 
 	private State state;
 
-	public Door() {
-		super("door.png", 32, 64, 500, 200, 2, "door");
+	public Door(int zsort) {
+		super("door.png", 32, 64, 500, 200, zsort, true, "door");
 		this.state = State.LOCKED;
 	}
 
@@ -96,7 +96,7 @@ public class Door extends EntityTextureWordSustantive {
 	}
 
 	@Override
-	public void walkTo(float destinationX, float destinationY) {
+	public void walkTo(int destinationX, int destinationY) {
 		// TODO Auto-generated method stub
 
 	}

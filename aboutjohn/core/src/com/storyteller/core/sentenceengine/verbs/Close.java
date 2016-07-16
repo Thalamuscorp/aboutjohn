@@ -9,7 +9,7 @@ public class Close extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public Close() {
-		super("verbs/close.png", 64, 32, 0, +32, 1, "Close");
+		super("verbs/close.png", 64, 32, 0, 0, 1, true,"Close");
 	}
 
 	@Override

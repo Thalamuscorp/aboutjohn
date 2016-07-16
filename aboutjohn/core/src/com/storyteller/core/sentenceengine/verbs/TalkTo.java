@@ -9,7 +9,7 @@ public class TalkTo extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public TalkTo() {
-		super("verbs/talkTo.png", 64, 32, +64, 0, 1, "Talk to");
+		super("verbs/talkTo.png", 64, 32, +64, 0, 1, true, "Talk to");
 	}
 
 	@Override

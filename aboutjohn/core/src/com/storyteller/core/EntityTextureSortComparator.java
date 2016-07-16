@@ -7,9 +7,9 @@ public class EntityTextureSortComparator implements Comparator<Entity> {
 	@Override
 	public int compare(Entity o1, Entity o2) {
 
-		EntityTexture texture1 = (EntityTexture) o1;
-		EntityTexture texture2 = (EntityTexture) o2;
-
+		Entity texture1 = (Entity) o1;
+		Entity texture2 = (Entity) o2;
+		
 		return texture1.getZsort() - texture2.getZsort();
 	}
 }

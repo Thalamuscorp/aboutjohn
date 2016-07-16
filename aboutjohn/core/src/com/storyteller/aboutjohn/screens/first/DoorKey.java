@@ -1,12 +1,12 @@
-package com.storyteller.aboutjohn.firstscreen;
+package com.storyteller.aboutjohn.screens.first;
 
 import com.storyteller.core.EntityTextureWordSustantive;
 import com.storyteller.core.sentenceengine.Sentence;
 
 public class DoorKey extends EntityTextureWordSustantive {
 
-	public DoorKey() {
-		super("key.png", 32, 32, 400, 200, 1, "key");
+	public DoorKey(int zsort) {
+		super("key.png", 32, 32, 400, 200, zsort, true, "key");
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class DoorKey extends EntityTextureWordSustantive {
 	}
 
 	@Override
-	public void walkTo(float destinationX, float destinationY) {
+	public void walkTo(int destinationX, int destinationY) {
 		// TODO Auto-generated method stub
 
 	}

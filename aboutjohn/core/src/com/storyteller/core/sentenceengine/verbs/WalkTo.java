@@ -9,7 +9,7 @@ public class WalkTo extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public WalkTo() {
-		super("verbs/close.png", 64, 32, 0, +32, 1, "Walk to");
+		super("verbs/close.png", 64, 32, 0, +32, 1, true, "Walk to");
 	}
 
 	@Override

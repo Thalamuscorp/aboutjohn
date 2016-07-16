@@ -6,20 +6,20 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.storyteller.core.EntityTextureWordSustantive;
 import com.storyteller.core.EntityTextureWordSustantiveCharacter;
 import com.storyteller.core.screen.ScreenCore;
+import com.storyteller.core.screen.ScreenWalkingEngine;
 import com.storyteller.core.sentenceengine.Sentence;
 import com.storyteller.core.sentenceengine.verbs.WalkTo;
 
+/**
+ * @author gastonblanco
+ *
+ */
 public class CharacterGuybrush extends EntityTextureWordSustantiveCharacter {
 
-	public enum State {
-		STANDING_LOOKING_RIGHT, STANDING_LOOKING_LEFT, WALKING_RIGHT, WALKING_LEFT
-	};
+	// Walking engine
+	ScreenWalkingEngine engine;
 
-	//
-	private State state;
-	private float destinationX;
-	private float destinationY;
-
+	// Sprite sections
 	private static final int FRAME_COLS = 5; // #1
 	private static final int FRAME_ROWS = 2; // #2
 
@@ -31,12 +31,17 @@ public class CharacterGuybrush extends EntityTextureWordSustantiveCharacter {
 	private TextureRegion currentFrame; // #7
 	float stateTime; // #8
 
-	public CharacterGuybrush(int x, int y) {
-		super("textures/guy_grey/templatemanwalkside.gif", 32, 64, x, y, 1, "Guybrush");
+	/**
+	 * @param x
+	 * @param y
+	 * @param zsort
+	 * @param walkingEngine
+	 */
+	public CharacterGuybrush(int zsort, ScreenWalkingEngine walkingEngine) {
+		super("textures/guy_grey/templatemanwalkside.png", 32, 64, walkingEngine.getCurrentX(),
+				walkingEngine.getCurrentY(), zsort, false, "Guybrush");
 
-		this.destinationX = x;
-		this.destinationY = y;
-		state = State.STANDING_LOOKING_RIGHT;
+		this.engine = walkingEngine;
 
 		// Setting Up Animation
 		TextureRegion[][] tmpRight = TextureRegion.split(this.getTexture(), this.getTexture().getWidth() / FRAME_COLS,
@@ -46,7 +51,7 @@ public class CharacterGuybrush extends EntityTextureWordSustantiveCharacter {
 
 		walkFramesRight = new TextureRegion[FRAME_COLS * FRAME_ROWS];
 		walkFramesLeft = new TextureRegion[FRAME_COLS * FRAME_ROWS];
-		
+
 		int index = 0;
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
@@ -63,59 +68,40 @@ public class CharacterGuybrush extends EntityTextureWordSustantiveCharacter {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.storyteller.core.EntityTexture#render(com.storyteller.core.screen.
+	 * ScreenCore)
+	 */
 	@Override
 	public void render(ScreenCore screen) {
 
-		// DEFINING MOVEMENT STATE
-		float step = 1;
-
-		if (this.destinationX > this.getRectangle().getX()) {
-			this.state = State.WALKING_RIGHT;
-			this.getRectangle().setX(this.getRectangle().getX() + step);
-
-		} else if (this.destinationX < this.getRectangle().getX()) {
-			this.state = State.WALKING_LEFT;
-			this.getRectangle().setX(this.getRectangle().getX() - step);
-		} else {
-			this.state = State.STANDING_LOOKING_RIGHT;
-		}
-
-		if (this.destinationY > this.getRectangle().getY()) {
-			this.state = State.WALKING_RIGHT;
-			this.getRectangle().setY(this.getRectangle().getY() + step);
-
-		} else if (this.destinationY < this.getRectangle().getY()) {
-			this.state = State.WALKING_RIGHT;
-			this.getRectangle().setY(this.getRectangle().getY() - step);
-
-		} else {
-			this.state = State.STANDING_LOOKING_RIGHT;
-		}
+		this.engine.takeNextStep();
 
 		// RUNNING THE ANIMATION STEP
-		if (this.state.equals(State.STANDING_LOOKING_RIGHT)) {
+		if (this.engine.getState().equals(ScreenWalkingEngine.State.STANDING_LOOKING_RIGHT)) {
 			currentFrame = walkFramesRight[0];
-			screen.game.batch.draw(currentFrame, this.getRectangle().x, this.getRectangle().y); // #17
+			screen.game.batch.draw(currentFrame, this.engine.getCurrentX(), this.engine.getCurrentY()); // #17
 
-		} else if (this.state.equals(State.STANDING_LOOKING_LEFT)) {
+		} else if (this.engine.getState().equals(ScreenWalkingEngine.State.STANDING_LOOKING_LEFT)) {
 			currentFrame = walkFramesLeft[0];
-			screen.game.batch.draw(currentFrame, this.getRectangle().x, this.getRectangle().y); // #17
+			screen.game.batch.draw(currentFrame, this.engine.getCurrentX(), this.engine.getCurrentY()); // #17
 
-		} else if (this.state.equals(State.WALKING_LEFT)) {
+		} else if (this.engine.getState().equals(ScreenWalkingEngine.State.WALKING_LEFT)) {
 			stateTime += Gdx.graphics.getDeltaTime(); // #15
 			currentFrame = walkAnimationLeft.getKeyFrame(stateTime, true);
-			screen.game.batch.draw(currentFrame, this.getRectangle().x, this.getRectangle().y); // #17
+			screen.game.batch.draw(currentFrame, this.engine.getCurrentX(), this.engine.getCurrentY()); // #17
 
-		} else if (this.state.equals(State.WALKING_RIGHT)) {
+		} else if (this.engine.getState().equals(ScreenWalkingEngine.State.WALKING_RIGHT)) {
 			stateTime += Gdx.graphics.getDeltaTime(); // #15
 			currentFrame = walkAnimationRight.getKeyFrame(stateTime, true);
-			screen.game.batch.draw(currentFrame, this.getRectangle().x, this.getRectangle().y); // #17
+			screen.game.batch.draw(currentFrame, this.engine.getCurrentX(), this.engine.getCurrentY()); // #17
 		} else {
 			currentFrame = walkFramesRight[0];
-			screen.game.batch.draw(currentFrame, this.getRectangle().x, this.getRectangle().y); // #17
+			screen.game.batch.draw(currentFrame, this.engine.getCurrentX(), this.engine.getCurrentY()); // #17
 		}
-
-		// super.render(screen);
 	}
 
 	@Override
@@ -192,58 +178,12 @@ public class CharacterGuybrush extends EntityTextureWordSustantiveCharacter {
 	}
 
 	@Override
-	public void walkTo(float destinationX, float destinationY) {
-		this.destinationX = destinationX;
-		this.destinationY = destinationY;
+	public void walkTo(int destinationX, int destinationY) {
+		this.engine.walkTo(destinationX, destinationY);
 	}
 
 	//
 	// GETTERS AND SETTERS
 	//
-
-	/**
-	 * @return the state
-	 */
-	public State getState() {
-		return state;
-	}
-
-	/**
-	 * @param state
-	 *            the state to set
-	 */
-	public void setState(State state) {
-		this.state = state;
-	}
-
-	/**
-	 * @return the destinationX
-	 */
-	public float getDestinationX() {
-		return destinationX;
-	}
-
-	/**
-	 * @param destinationX
-	 *            the destinationX to set
-	 */
-	public void setDestinationX(float destinationX) {
-		this.destinationX = destinationX;
-	}
-
-	/**
-	 * @return the destinationY
-	 */
-	public float getDestinationY() {
-		return destinationY;
-	}
-
-	/**
-	 * @param destinationY
-	 *            the destinationY to set
-	 */
-	public void setDestinationY(float destinationY) {
-		this.destinationY = destinationY;
-	}
 
 }

@@ -5,8 +5,8 @@ public abstract class EntityTextureWordVerbComposite extends EntityTextureWordVe
 	private String secondText;
 
 	public EntityTextureWordVerbComposite(String textureImage, int width, int height, int x, int y, int zsort,
-			String sentenceFirstText, String sentenceSecondText) {
-		super(textureImage, width, height, x, y, zsort, sentenceFirstText);
+			boolean isTouchable, String sentenceFirstText, String sentenceSecondText) {
+		super(textureImage, width, height, x, y, zsort, isTouchable, sentenceFirstText);
 		this.secondText = sentenceSecondText;
 	}
 

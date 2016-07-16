@@ -1,4 +1,4 @@
-package com.storyteller.aboutjohn.secondscreen;
+package com.storyteller.aboutjohn.screens.second;
 
 import com.storyteller.core.CoreGame;
 import com.storyteller.core.screen.ScreenCore;

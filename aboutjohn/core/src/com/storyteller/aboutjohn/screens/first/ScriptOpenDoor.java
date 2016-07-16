@@ -1,4 +1,4 @@
-package com.storyteller.aboutjohn.firstscreen;
+package com.storyteller.aboutjohn.screens.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.storyteller.core.EntityTexture;

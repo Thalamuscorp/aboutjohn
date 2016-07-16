@@ -9,7 +9,7 @@ public class Push extends EntityTextureWordVerbSimple {
 	public EntityLabel label;
 
 	public Push() {
-		super("verbs/push.png", 64, 32, +64 + 64, +32 + 32, 1, "Push");
+		super("verbs/push.png", 64, 32, +64 + 64, +32 + 32, 1, true, "Push");
 	}
 
 	@Override

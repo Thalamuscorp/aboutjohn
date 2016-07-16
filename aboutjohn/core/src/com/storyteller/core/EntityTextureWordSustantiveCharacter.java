@@ -7,8 +7,8 @@ public abstract class EntityTextureWordSustantiveCharacter extends EntityTexture
 	public Array<EntityTextureWordSustantive> inventory;
 
 	public EntityTextureWordSustantiveCharacter(String textureImage, int width, int height, int x, int y, int zsort,
-			String sentenceText) {
-		super(textureImage, width, height, x, y, zsort, sentenceText);
+			boolean isTouchable, String sentenceText) {
+		super(textureImage, width, height, x, y, zsort, isTouchable, sentenceText);
 		this.inventory = new Array<EntityTextureWordSustantive>(true, 99);
 	}
 

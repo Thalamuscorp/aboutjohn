@@ -3,6 +3,7 @@ package com.storyteller.core;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.storyteller.core.screen.ScreenCore;
 
 public abstract class EntityTexture extends Entity {
@@ -11,8 +12,9 @@ public abstract class EntityTexture extends Entity {
 
 	private Texture texture;
 
-	public EntityTexture(String textureImage, float width, float height, float x, float y, int zsort) {
-		super(zsort);
+	public EntityTexture(String textureImage, float width, float height, float x, float y, int zsort,
+			boolean isTouchable) {
+		super(zsort, isTouchable);
 
 		texture = new Texture(Gdx.files.internal(textureImage));
 
