@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Graphics.DisplayMode"/>
+<fullyQualifiedTypeName name="com.sun.prism.image.ViewPort"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.utils.viewport.FitViewport"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.utils.Disposable"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
+<fullyQualifiedTypeName name="com.storyteller.core.CoreGame"/>
+<fullyQualifiedTypeName name="com.storyteller.aboutjohn.firstscreen.FirstStage"/>
+<fullyQualifiedTypeName name="com.artemis.Entity"/>
+<fullyQualifiedTypeName name="com.storyteller.aboutjohn.secondscreen.SecondStage"/>
+<fullyQualifiedTypeName name="com.storyteller.core.CoreStage"/>
+<fullyQualifiedTypeName name="com.storyteller.aboutjohn.screens.mainmenu.aboutjohn.MainMenuStage"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.utils.Sort"/>
+<fullyQualifiedTypeName name="com.storyteller.core.EntityLabel"/>
+<fullyQualifiedTypeName name="com.kotcrab.vis.ui.building.utilities.Alignment"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.utils.viewport.FillViewport"/>
+<fullyQualifiedTypeName name="com.storyteller.aboutjohn.firstscreen.FirstScreenBackground"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
+<fullyQualifiedTypeName name="com.storyteller.core.EntityTextureSortComparator"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="com.storyteller.core.screen.ScreenWalkingEngine.State"/>
+<fullyQualifiedTypeName name="com.storyteller.core.screen.ScreenWalkingEngineSimpleBox"/>
+<fullyQualifiedTypeName name="com.storyteller.core.screen.ScreenWalkingEngine"/>
+<fullyQualifiedTypeName name="com.storyteller.aboutjohn.CharacterGuybrush"/>
+</qualifiedTypeNameHistroy>
